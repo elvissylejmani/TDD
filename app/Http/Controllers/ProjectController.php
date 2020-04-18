@@ -14,7 +14,7 @@ class ProjectController extends Controller
      */
     public function index()
     {
-        //
+        return auth()->user()->Projects;
     }
 
     /**
@@ -24,7 +24,7 @@ class ProjectController extends Controller
      */
     public function create()
     {
-        //
+        
     }
 
     /**
@@ -44,9 +44,12 @@ class ProjectController extends Controller
      * @param  \App\project  $project
      * @return \Illuminate\Http\Response
      */
-    public function show(project $project)
+    public function show(project $project, $id)
     {
-        //
+        $project = project::findOrFail($id);
+           if (auth()->user()->id !== $project->id) {
+               abort(403);
+           }
     }
 
     /**
