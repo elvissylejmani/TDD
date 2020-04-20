@@ -35,7 +35,12 @@ class ProjectController extends Controller
      */
     public function store(Request $request)
     {
-        //
+       
+        request()->validate(['title' => 'required','description' => 'required']);
+       
+       
+        // project::create(['title' => $request->input('title'), 'description' => $request->input('description'),'owner_id' => 2]);
+        project::create(request(['title','description','owner_id']));
     }
 
     /**
@@ -47,7 +52,7 @@ class ProjectController extends Controller
     public function show(project $project, $id)
     {
         $project = project::findOrFail($id);
-           if (auth()->user()->id !== $project->id) {
+           if (auth()->user()->id != $project->id) {
                abort(403);
            }
     }
