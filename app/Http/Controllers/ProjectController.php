@@ -16,7 +16,7 @@ class ProjectController extends Controller
     {
         $projects = auth()->user()->Projects;
 
-        return view('index',compact('projects'));
+        return view('projects.index',compact('projects'));
     }
 
     /**
