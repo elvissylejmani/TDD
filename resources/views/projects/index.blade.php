@@ -11,7 +11,7 @@
 @empty
 No Project yet.
 
-@endforeach
+@endforelse
 
 
 @endsection
