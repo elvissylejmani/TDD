@@ -2,12 +2,15 @@
 
 @section('content')
 
-@foreach ($projects as $project)
+@forelse ($projects as $project)
 <li>
 <a href="{{$project->path()}}">    
     {{ $project->title}}
 </a>
 </li>
+@empty
+No Project yet.
+
 @endforeach
 
 
