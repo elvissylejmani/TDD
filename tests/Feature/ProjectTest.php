@@ -59,6 +59,8 @@ class ProjectTest extends TestCase
     /** @test */
     public function a_user_can_view_a_project()
     {
+        $this->actingAs(factory('App\User')->create());
+        
         $project = factory(project::class)->create();
 
         $this->get('/Projects/'. $project->id)
