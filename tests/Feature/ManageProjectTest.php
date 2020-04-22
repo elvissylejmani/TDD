@@ -17,6 +17,7 @@ class ManageProjectTest extends TestCase
         $project = factory(project::class)->create();
         
         $this->get('/Projects')->assertRedirect ('login');
+        $this->get('/Projects/create')->assertRedirect ('login');
         $this->get($project->path())->assertRedirect ('login');
         $this->post('/Projects',$project->toArray())->assertRedirect('login');
     }
