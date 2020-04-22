@@ -6,5 +6,6 @@
 
 <p>{{$project->description}}</p>
 
+    <a href="/Projects">Go back</a>    
 
 @endsection
