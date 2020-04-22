@@ -13,4 +13,8 @@ class project extends Model
     {
         return "/Projects/{$this->id}";
     }
+    public function owner()
+    {
+        return $this->belongsTo(User::class,'owner_id','id');
+    }
 }
