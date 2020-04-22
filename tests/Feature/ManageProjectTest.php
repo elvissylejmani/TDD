@@ -12,25 +12,14 @@ class ManageProjectTest extends TestCase
     use WithFaker, RefreshDatabase;
 
     /** @test */
-    public function guests_cannot_create_projects()
-    {
-        $attributes = factory(project::class)->raw(['owner_id' => '']);
-
-        $this->post('/Projects',$attributes)->assertRedirect('login');
-    }
-      /** @test */
-    public function guests_cannot_view_projects()
-    {
-        $this->get('/Projects')->assertRedirect ('login');
-    }
-      /** @test */
-    public function guests_cannot_view_a_single_project()
+    public function guests_cannot_manage_projects()
     {
         $project = factory(project::class)->create();
-
+        
+        $this->get('/Projects')->assertRedirect ('login');
         $this->get($project->path())->assertRedirect ('login');
+        $this->post('/Projects',$project->toArray())->assertRedirect('login');
     }
-
     /** @test */ 
     public function a_user_can_create_a_project()
     {
