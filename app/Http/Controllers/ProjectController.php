@@ -14,7 +14,9 @@ class ProjectController extends Controller
      */
     public function index()
     {
-        return auth()->user()->Projects;
+        $projects = auth()->user()->Projects;
+
+        return view('index',compact('projects'));
     }
 
     /**
@@ -55,6 +57,7 @@ class ProjectController extends Controller
            if (auth()->user()->id != $project->id) {
                abort(403);
            }
+           return $project;
     }
 
     /**
