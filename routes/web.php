@@ -16,7 +16,11 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::resource('/Projects','ProjectController')->middleware('auth');
+
+Route::group(['middleware' => 'auth'],function (){
+
+    Route::resource('/Projects','ProjectController');
+});
 
 Auth::routes();
 
