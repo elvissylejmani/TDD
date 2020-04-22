@@ -66,7 +66,16 @@ class ProjectTest extends TestCase
 
         $this->post('/Projects',[])->assertSessionHasErrors('description');
     }
- 
+    /** @test */
+    public function an_authenticated_user_cannot_view_the_projects_of_others()
+    {
+        $this->be(factory('App\User')->create());
+
+        $project = factory(project::class)->create();
+
+        $this->get($project->path())->assertStatus(403);
+    }
+
 
     /** @test */
     public function a_user_can_view_their_project()
