@@ -11,15 +11,9 @@
 <main class="lg:flex flex-wrap -mx-3">
 @forelse ($projects as $project)
 <div class="lg:w-1/3 px-3 pb-6">
-    <div class="card" style="height:200px">
-        <h3 class="font-normal text-xl py-4 mb-3 -ml-5 border-l-4 border-blue-400 pl-4">
-        <a href="{{ $project->path()}}">    {{ \Illuminate\Support\Str::limit($project->title, 50  ) }} </a>
-        </h3>
-        <div class="text-gray-600">
-            {{ \Illuminate\Support\Str::limit($project->description, 100) }}
-        </div>
-    </div>
-</div>
+
+   @include('projects.card')
+</div>  
     @empty
     <div>
 No Project yet.
