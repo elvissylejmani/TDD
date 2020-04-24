@@ -8,15 +8,12 @@ use Tests\TestCase;
 
 class ProjectTasksTest extends TestCase
 {
-    /**
-     * A basic feature test example.
-     *
-     * @return void
-     */
-    public function testExample()
+ use RefreshDatabase;
+ 
+    /** @test */
+    public function a_project_can_have_tasks()
     {
-        $response = $this->get('/');
-
-        $response->assertStatus(200);
+        
     }
+
 }
