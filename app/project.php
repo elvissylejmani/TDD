@@ -17,4 +17,9 @@ class project extends Model
     {
         return $this->belongsTo(User::class,'owner_id','id');
     }
+
+    public function addTask($body)
+    {
+        
+    }
 }
